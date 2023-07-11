@@ -1,17 +1,5 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Ceci est un fichier twig</h1>
+{% extends'base.html.twig' %}
+{% block body %}
+<h1>Ceci est la page d'accueil</h1>
 
-    {%set nom = "Grégoire"%}
-
-    {{ nom|upper }}
-
-</body>
-</html>
+{% endblock %}
