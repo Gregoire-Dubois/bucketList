@@ -37,6 +37,7 @@ class MainController extends AbstractController
         return $this->render('main/aboutUs.html.twig', [
             "personnes" => $data["personnes"]
         ]);
+
     }
 
 }
