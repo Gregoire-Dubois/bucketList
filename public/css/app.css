@@ -1,0 +1,36 @@
+html{
+    width: 100%;
+}
+
+header {
+    background-color: #A5A48F;
+    display: flex;
+
+
+}
+
+.logo{
+    width: 10%;
+
+}
+
+.navigation{
+    text-align: center;
+}
+
+.navigation li{
+    display: inline-block;
+    margin:  0 10px;
+}
+
+body{
+    background-color: #FFF1E6;
+
+}
+
+footer{
+    background-color: #F0DBD3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
