@@ -17,12 +17,11 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/nouvellePage", name="nouvelle_page")
+     * @Route("/aboutUs", name="aboutUs")
      */
-    public function nouvellePage()
+    public function aboutUs()
     {
-        echo "Ceci est une nouvelle page";
-        die();
+        return $this->render('main/aboutUs.html.twig');
     }
 
 }
