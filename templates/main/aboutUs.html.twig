@@ -31,4 +31,14 @@
 
     </p>
 
+    <section>
+        {% for personne in personnes %}
+            <h2>{{ personne.nom }}</h2>
+            <p>Date de naissance : {{ personne['date de naissance'] }}</p>
+            <p>Adresse : {{ personne.adresse.rue }}, {{ personne.adresse.ville }}, {{ personne.adresse.Pays }}</p>
+        {% endfor %}
+    </section>
+
+
+
 {% endblock %}

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class MainController extends AbstractController
 {
@@ -19,9 +20,23 @@ class MainController extends AbstractController
     /**
      * @Route("/aboutUs", name="aboutUs")
      */
-    public function aboutUs()
+    /**
+     * @Route("/aboutUs", name="aboutUs")
+     */
+    public function aboutUs(SerializerInterface $serializer)
     {
-        return $this->render('main/aboutUs.html.twig');
+// Chemin vers le fichier JSON
+        $jsonFile = $this->getParameter('kernel.project_dir') . '/src/data/team.json';
+
+        // Lecture du fichier JSON
+        $jsonData = file_get_contents($jsonFile);
+
+        // Désérialisation des données JSON
+        $data = $serializer->decode($jsonData, 'json');
+
+        return $this->render('main/aboutUs.html.twig', [
+            "personnes" => $data["personnes"]
+        ]);
     }
 
 }

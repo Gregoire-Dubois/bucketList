@@ -1,0 +1,31 @@
+{
+  "personnes": [
+    {
+      "nom": "Grégoire Dubois",
+      "date de naissance": "24/01/1986",
+      "adresse": {
+        "rue": "Rue secrète",
+        "ville": "Lyon",
+        "Pays": "France"
+      }
+    },
+    {
+      "nom": "Serena Williams",
+      "date de naissance": "26/09/1981",
+      "adresse": {
+        "rue": "Rue du tennis",
+        "ville": "Saginaw",
+        "Pays": "USA"
+      }
+    },
+    {
+      "nom": "Albert Einstein",
+      "date de naissance": "18/04/1879",
+      "adresse": {
+        "rue": "Rue du paradis",
+        "ville": "Ciel",
+        "Pays": "Très haut"
+      }
+    }
+  ]
+}
