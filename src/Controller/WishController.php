@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\WishRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,9 +12,15 @@ class WishController extends AbstractController
     /**
      * @Route("/wish", name="wishs_list")
      */
-    public function listWischs(): Response
+    public function listWischs(WishRepository $wishRepository): Response
     {
-        return  $this->render('wish/wishs.html.twig');
+        $wishs = $wishRepository->findAll();
+
+
+
+        return  $this->render('wish/wishs.html.twig', [
+            'wishs' => $wishs
+        ]);
     }
 
     /**

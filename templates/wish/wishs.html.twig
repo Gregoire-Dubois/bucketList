@@ -4,6 +4,17 @@
 
 {% block body %}
 
-    <h1>Liste des Wischs</h1>
+    <h1>Liste des Wishs</h1>
+    <section>
+        {% for wish in wishs %}
+        <article>
+            <a href="#" title=""><h2>{{ wish.title }}</h2></a>
+            <p>{{ wish.description }}</p>
+            <p>{{ wish.dateCreated | date('Y-m-d')}}</p>
+            <p>{{ wish.author }}</p>
+        </article>
+        {% endfor %}
+
+    </section>
 
 {% endblock %}
