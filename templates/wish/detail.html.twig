@@ -6,4 +6,10 @@
 
     <h1>Détail d'un Wisch</h1>
 
+        <article>
+            <p>{{ wish.description }}</p>
+            <p>{{ wish.dateCreated | date('Y-m-d')}}</p>
+            <p>{{ wish.author }}</p>
+        </article>
+
 {% endblock %}

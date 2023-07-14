@@ -15,20 +15,22 @@ class WishController extends AbstractController
     public function listWischs(WishRepository $wishRepository): Response
     {
         $wishs = $wishRepository->findAll();
-
-
-
         return  $this->render('wish/wishs.html.twig', [
             'wishs' => $wishs
         ]);
     }
 
     /**
-     * @Route("/detail", name="wishs_detail")
+     * @Route("/detail/{id}", name="wishs_detail")
      */
-    public function detailWisch()
+    public function detailWisch(int $id, WishRepository $wishRepository) :Response
     {
-        return $this->render('wish/detail.html.twig');
+
+        $wish = $wishRepository ->find($id);
+
+        return $this->render('wish/detail.html.twig',[
+            'wish' => $wish
+        ]);
     }
 
 }
