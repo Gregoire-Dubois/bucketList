@@ -9,20 +9,22 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class WishController extends AbstractController
 {
+    // affiche la liste de tous les wishs
     /**
      * @Route("/wish", name="wishs_list")
      */
-    public function listWischs(WishRepository $wishRepository): Response
+        public function listWischs(WishRepository $wishRepository): Response
     {
         $wishs = $wishRepository->findAll();
         return  $this->render('wish/wishs.html.twig', [
             'wishs' => $wishs
         ]);
     }
-
+    // affiche le détail d'un wish
     /**
      * @Route("/detail/{id}", name="wishs_detail")
      */
+
     public function detailWisch(int $id, WishRepository $wishRepository) :Response
     {
 
@@ -32,6 +34,11 @@ class WishController extends AbstractController
             'wish' => $wish
         ]);
     }
+
+
+
+
+
 
 }
 
