@@ -20,13 +20,22 @@
 
             <nav class="navigation">
                 <ul>
-                    <li><a href="#" title="">Ajouter une idée à la liste</a></li>
+                    <li><a href="{{ path('create') }}" title="">Ajouter une idée à la liste</a></li>
                     <li><a href="{{ path('wishs_list') }}" title="">Liste des wishs</a></li>
                     <li><a href="{{ path('aboutUs') }}" title="">About us</a></li>
                 </ul>
             </nav>
 
         </header>
+
+        {# read and display all flash messages #}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
 
         <main>
             {% block body %}{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello WishController!{% endblock %}
+
+{% block body %}
+
+    <h1>Créer un wish</h1>
+
+    <div>
+        {{ form_start(wishForm) }}
+        {{ form_widget(wishForm) }}
+        <button>Créer le Wish</button>
+        {{ form_end(wishForm) }}
+
+    </div>
+
+{% endblock %}
