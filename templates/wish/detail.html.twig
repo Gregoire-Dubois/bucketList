@@ -10,6 +10,8 @@
             <p>{{ wish.description }}</p>
             <p>{{ wish.dateCreated | date('Y-m-d')}}</p>
             <p>{{ wish.author }}</p>
+            <p>{{ wish.category.name }}</p>
+
         </article>
 
 {% endblock %}

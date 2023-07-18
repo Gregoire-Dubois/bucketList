@@ -5,11 +5,14 @@
 {% block body %}
 
     <h1>Liste des Wishs</h1>
+
     <section>
         {% for wish in wishs %}
         <article>
             <a href=" {{ path('wishs_detail', {'id':wish.id})}} " title=""><h2>{{ wish.title }}</h2></a>
             <p>{{ wish.author }}</p>
+            <p>{{ wish.category.name }}</p>
+
         </article>
         {% endfor %}
 
