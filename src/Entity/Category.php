@@ -77,7 +77,6 @@ class Category
                 $wish->setCategory(null);
             }
         }
-
         return $this;
     }
 }
