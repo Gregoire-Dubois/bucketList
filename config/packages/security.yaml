@@ -37,6 +37,7 @@ security:
          - { path: ^/wish, roles: ROLE_USER }
 
 
+
 when@test:
     security:
         password_hashers:
