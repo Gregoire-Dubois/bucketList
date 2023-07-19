@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Wish;
 use App\Form\WishType;
 use App\Repository\WishRepository;
+use App\service\Censurator;
 use Doctrine\ORM\EntityManagerInterface;
 use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,43 +44,37 @@ class WishController extends AbstractController
     /**
      * @Route("/create", name="create")
      */
-    public function createWish(Request $request,
-                               EntityManagerInterface $entityManager)
-    {
+    public function createWish(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        Censurator $censurator
+    ) {
         $wish = new Wish();
-        $wishForm  = $this-> createForm(WishType::class, $wish);
+        $wishForm = $this->createForm(WishType::class, $wish);
 
+        $wishForm->handleRequest($request);
 
-        //dump($wish);
-        $wishForm-> handleRequest($request);
-        //dump($wish);
+        // vérification si submit fait et si valide
+        if ($wishForm->isSubmitted() && $wishForm->isValid()) {
+            // Purifie le souhait avant de le sauver
+            $purifiedDescription = $censurator->purify($wish);
+            $wish->setDescription($purifiedDescription);
 
-        // traitement de formulaire
-
-        if ($wishForm->isSubmitted()){
+            // ajoute la date de création
             $wish->setDateCreated(new \DateTime());
+
+            // enregistre en base de données
             $entityManager->persist($wish);
             $entityManager->flush();
 
-            $this-> addFlash('succes', 'Wish enregistré !!');
-            return $this->redirectToRoute('wishs_detail',['id' => $wish->getId()] );
+            $this->addFlash('success', 'Wish enregistré !!');
 
+            return $this->redirectToRoute('wishs_detail', ['id' => $wish->getId()]);
         }
 
-        return $this -> render('wish/create.html.twig', [
-            'wishForm' => $wishForm -> createView()
+        return $this->render('wish/create.html.twig', [
+            'wishForm' => $wishForm->createView(),
         ]);
-
-
     }
 
-
-
-
 }
-
-
-
-
-
-
