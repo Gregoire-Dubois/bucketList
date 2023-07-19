@@ -20,7 +20,7 @@ class Censurator
         $descriptionPurify="";
 
         foreach ($grosMots as $moche) {
-            // Vérification dans le titre
+            // Vérification dans le titre non utilisée
             if (stripos($titre, $moche) !== false) {
                 $titrePurify = str_replace($moche, "*", $titre);
                 file_put_contents('test.txt', "Le purify contient" . $titrePurify  ."\n", FILE_APPEND);
